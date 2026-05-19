@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pooja Hiremath — Senior QA Lead & SDET</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-mid: #1A2E47;
+    --teal: #0EA47A;
+    --teal-light: #E6F9F3;
+    --teal-mid: #0BC47A;
+    --gold: #C8973A;
+    --gold-light: #FDF4E7;
+    --cream: #F8F6F1;
+    --text: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: rgba(15,27,45,0.1);
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(248,246,241,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 5rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(14,164,122,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-mid);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .hero-bio {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 520px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--navy);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1.5px solid var(--navy);
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { background: var(--navy); color: white; }
+
+  /* HERO RIGHT */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-number span { color: var(--teal); }
+
+  .stat-desc {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .ai-badge {
+    background: var(--navy);
+    color: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ai-badge-icon {
+    width: 48px; height: 48px;
+    background: rgba(14,164,122,0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .ai-badge-text { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .ai-badge-text strong { color: white; display: block; font-size: 1rem; margin-bottom: 2px; }
+
+  /* SECTIONS */
+  section {
+    padding: 5rem 5rem;
+  }
+
+  section:nth-child(even) {
+    background: var(--white);
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--navy);
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  section:nth-child(even) .project-card {
+    background: var(--cream);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(15,27,45,0.1);
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--teal);
+  }
+
+  .project-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .project-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--teal);
+    padding-bottom: 1px;
+  }
+
+  .project-link:hover { opacity: 0.7; }
+
+  /* EXPERIENCE */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.4rem;
+    top: 6px;
+    width: 10px; height: 10px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+  }
+
+  section:nth-child(even) .timeline-dot {
+    border-color: var(--white);
+  }
+
+  .job-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .job-company {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+  }
+
+  .job-date {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    background: var(--cream);
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  section:nth-child(even) .job-date {
+    background: var(--white);
+  }
+
+  .job-title {
+    font-size: 0.9rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .job-bullets {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+
+  .job-bullets li {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .job-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 0.8rem;
+  }
+
+  .tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tech-chip {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-block {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+
+  section:nth-child(even) .skill-block {
+    background: var(--white);
+  }
+
+  .skill-block-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-block-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-block-items {
+    font-size: 0.825rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+
+  /* CERTS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  section:nth-child(even) .cert-card {
+    background: var(--cream);
+  }
+
+  .cert-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  .cert-issuer {
+    font-size: 0.775rem;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* CONTACT */
+  .contact-wrapper {
+    background: var(--navy);
+    border-radius: 24px;
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .contact-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .contact-title em { color: var(--teal); font-style: italic; }
+
+  .contact-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--teal); }
+
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(14,164,122,0.15);
+    color: var(--teal-mid);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(14,164,122,0.3);
+  }
+
+  .availability-badge::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in:nth-child(4) { animation-delay: 0.4s; }
+  .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 100px 2rem 3rem; }
+    section { padding: 3rem 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .certs-grid { grid-template-columns: 1fr; }
+    .contact-wrapper { grid-template-columns: 1fr; padding: 2rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+  }
+
+  @media (max-width: 600px) {
+    .stat-cards { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero-name { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Pooja Hiremath</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="fade-in">
+      <div class="hero-tag">Available for new opportunities</div>
+      <h1 class="hero-name">Pooja<br><em>Hiremath</em></h1>
+      <p class="hero-subtitle">Senior QA Lead · SDET · AI-Powered Test Automation</p>
+      <p class="hero-bio">
+        9+ years building enterprise automation frameworks and leading offshore QA teams for Fortune 500 clients. Most recently at Deloitte, governing a 1,000+ regression suite across 4 offshore teams with zero critical defect escapes. Creator of two live AI-powered QA tools used by engineers worldwide.
+      </p>
+      <div class="hero-cta">
+        <a href="mailto:pooja.70h@gmail.com" class="btn-primary">✉ Get in Touch</a>
+        <a href="https://www.linkedin.com/in/hiremath-p/" target="_blank" class="btn-secondary">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right fade-in">
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-number">9<span>+</span></div>
+        <div class="stat-desc">Years in QA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-desc">Offshore teams led</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1K<span>+</span></div>
+        <div class="stat-desc">Regression tests</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-desc">AI tools built</div>
+      </div>
+    </div>
+    <div class="ai-badge">
+      <div class="ai-badge-icon">🤖</div>
+      <div class="ai-badge-text">
+        <strong>AI/ML PG Certified — UT Austin</strong>
+        Testing AI since 2014 · Built 2 live AI QA tools · NLP model validation expert
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Featured Projects</div>
+  <div class="section-title">AI Tools I've Built</div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-pill">🧠 Live Product</div>
+      <div class="project-name">TestMind AI</div>
+      <p class="project-desc">An AI-powered QA copilot built with Google AI Studio and Vercel. Generates functional test cases, edge cases, and gap analysis directly from product requirements — reducing manual test creation effort by 60%+. Automatically identifies missing test scenarios and risk areas.</p>
+      <a href="https://testmind-ai.vercel.app/" target="_blank" class="project-link">Visit TestMind AI →</a>
+    </div>
+    <div class="project-card">
+      <div class="project-pill">⚡ Commercially Sold</div>
+      <div class="project-name">AI QA Prompt Toolkit</div>
+      <p class="project-desc">121 battle-tested prompts across 5 modules covering BDD, Playwright/Selenium automation, API testing, bug analysis, and QA strategy. Works with ChatGPT, Claude, and GitHub Copilot. Built from 9+ years of real QA experience. First sale within 24 hours of launch.</p>
+      <a href="https://ai-qa-prompts.vercel.app/" target="_blank" class="project-link">Visit AI QA Toolkit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Work History</div>
+  <div class="section-title">Professional Experience</div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="job-meta">
+        <div class="job-company">KForce · Deloitte (client)</div>
+        <div class="job-date">Feb 2025 – Feb 2026</div>
+      </div>
+      <div class="job-title">Lead QA Engineer — Omnia Enterprise Platform</div>
+      <ul class="job-bullets">
+        <li>Led QA delivery for 4 offshore teams in India, managing 100+ user stories per 3-week sprint with zero critical defect escapes</li>
+        <li>Owned and governed a 1,000+ regression test suite using Java, Selenium, and Cucumber/BDD</li>
+        <li>Led AI-driven automation modernization — transitioning from Tosca to NLP-embedded Playwright (Python) framework</li>
+        <li>Mentored 10+ QA engineers on BDD best practices, test strategy, and Agile delivery</li>
+      </ul>
+      <div class="tech-row">
+        <span class="tech-chip">Java</span><span class="tech-chip">Playwright</span><span class="tech-chip">Cucumber/BDD</span><span class="tech-chip">SQL</span><span class="tech-chip">Snowflake</span><span class="tech-chip">AWS S3</span><span class="tech-chip">Azure DevOps</span><span class="tech-chip">AI/ML</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="job-meta">
+        <div class="job-company">GlobalLogic · WEX Inc. + Walgreens Healthcare</div>
+        <div class="job-date">Sept 2022 – Jan 2025</div>
+      </div>
+      <div class="job-title">Senior Test Engineer</div>
+      <ul class="job-bullets">
+        <li>Built data quality automation framework from scratch as sole QA engineer at WEX Inc. — ETL testing, source-to-target reconciliation using SQL, Snowflake, and dbt</li>
+        <li>Reduced manual data testing effort by 50% using automated Python/Pandas validation scripts</li>
+        <li>Led REST API automation using Rest Assured at Walgreens Healthcare; validated D365 and PowerApps portal</li>
+      </ul>
+      <div class="tech-row">
+        <span class="tech-chip">Python</span><span class="tech-chip">Robot Framework</span><span class="tech-chip">Snowflake</span><span class="tech-chip">dbt</span><span class="tech-chip">Pandas</span><span class="tech-chip">AWS S3</span><span class="tech-chip">Rest Assured</span><span class="tech-chip">D365</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="job-meta">
+        <div class="job-company">Numerify (Digital AI)</div>
+        <div class="job-date">Oct 2018 – Jan 2020</div>
+      </div>
+      <div class="job-title">Automation QA Engineer</div>
+      <ul class="job-bullets">
+        <li>Built Selenium WebDriver automation framework using Page Object Model and Cucumber/BDD</li>
+        <li>Specialized in ETL testing and SQL data validation; integrated with Jenkins CI/CD pipelines</li>
+      </ul>
+      <div class="tech-row">
+        <span class="tech-chip">Java</span><span class="tech-chip">Selenium</span><span class="tech-chip">TestNG</span><span class="tech-chip">Jenkins</span><span class="tech-chip">SQL</span><span class="tech-chip">Talend</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="job-meta">
+        <div class="job-company">Forte Research Systems (now Advarra)</div>
+        <div class="job-date">Sept 2015 – Feb 2018</div>
+      </div>
+      <div class="job-title">QA Tester — Clinical Research SaaS</div>
+      <ul class="job-bullets">
+        <li>SQL backend validation for clinical research platform; designed comprehensive test suites from SRS documents</li>
+        <li>Created Requirements Traceability Matrix; led UAT coordination with architects and business stakeholders</li>
+      </ul>
+      <div class="tech-row">
+        <span class="tech-chip">Selenium</span><span class="tech-chip">SQL</span><span class="tech-chip">Oracle</span><span class="tech-chip">Manual Testing</span><span class="tech-chip">UAT</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="job-meta">
+        <div class="job-company">Agora Analytics</div>
+        <div class="job-date">Apr 2014 – Aug 2015</div>
+      </div>
+      <div class="job-title">QA Engineer — NLP/ML Model Testing</div>
+      <ul class="job-bullets">
+        <li>Tested NLP-based ML model for automated resume-to-job matching — validated model output accuracy, ranking logic, and NLP parsing quality</li>
+      </ul>
+      <div class="tech-row">
+        <span class="tech-chip">NLP/ML Testing</span><span class="tech-chip">SQL</span><span class="tech-chip">Python</span><span class="tech-chip">Selenium</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Skills</div>
+  <div class="section-title">What I Work With</div>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="skill-block-icon">⚙️</div>
+      <div class="skill-block-title">Automation & Frameworks</div>
+      <div class="skill-block-items">Java · Selenium WebDriver · Playwright · Python · Cucumber/BDD · TestNG · Rest Assured · Robot Framework · Tosca · Maven · Jenkins · Page Object Model</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-icon">🗄️</div>
+      <div class="skill-block-title">Data & Databases</div>
+      <div class="skill-block-items">SQL · Snowflake · dbt · Pandas · MySQL · MSSQL · Oracle · Azure Cosmos DB · ETL Testing · Source-to-Target Reconciliation · Data Profiling</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-icon">🔌</div>
+      <div class="skill-block-title">API & Integration</div>
+      <div class="skill-block-items">REST API · SOAP · GraphQL · Postman · SoapUI · Azure Event Hubs · Rest Assured · Webhook Testing · Microservices Testing</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-icon">☁️</div>
+      <div class="skill-block-title">Cloud & DevOps</div>
+      <div class="skill-block-items">AWS S3 · Azure DevOps · Azure Portal · Jenkins CI/CD · Git · Maven · Agile/Scrum · SAFe · Jira · QTest</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-icon">🤖</div>
+      <div class="skill-block-title">AI & Intelligent Automation</div>
+      <div class="skill-block-items">AI-driven Test Automation · NLP Testing · Google AI Studio · LLM Testing · AI-powered QE Agents · ML Model Testing · AI/ML PG Certified (UT Austin)</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-icon">🏥</div>
+      <div class="skill-block-title">Domain Experience</div>
+      <div class="skill-block-items">Healthcare QA (Walgreens, PHI data) · Clinical Research (Forte/Advarra) · Fraud Analytics (WEX) · Enterprise SaaS (Deloitte) · Payments · AI/ML Systems</div>
+    </div>
+  </div>
+
+  <br><br>
+  <div class="section-label">Certifications</div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🏆</div>
+      <div>
+        <div class="cert-name">Tricentis TOSCA Automation Specialist (Level 1 & 2)</div>
+        <div class="cert-issuer">TOSCA Data Integrity Specialist</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <div class="cert-name">AI/ML PG Program</div>
+        <div class="cert-issuer">University of Texas at Austin</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📋</div>
+      <div>
+        <div class="cert-name">Certified SAFe 6 Agilist</div>
+        <div class="cert-issuer">Scaled Agile</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div>
+        <div class="cert-name">Microsoft Azure DevOps Solutions</div>
+        <div class="cert-issuer">Logging Design</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div>
+      <div class="availability-badge" style="margin-bottom:1.5rem">Available immediately</div>
+      <div class="contact-title">Let's work<br><em>together</em></div>
+      <p class="contact-desc">Senior QA Lead based in Tampa, FL. Open to remote, hybrid, or onsite Tampa roles. H4 EAD — no sponsorship required, authorized to work immediately.</p>
+      <a href="mailto:pooja.70h@gmail.com" class="btn-primary" style="display:inline-flex">✉ Send me an email</a>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:pooja.70h@gmail.com" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        pooja.70h@gmail.com
+      </a>
+      <a href="tel:8135604411" class="contact-link">
+        <div class="contact-link-icon">📞</div>
+        813-560-4411
+      </a>
+      <a href="https://www.linkedin.com/in/hiremath-p/" target="_blank" class="contact-link">
+        <div class="contact-link-icon">in</div>
+        linkedin.com/in/hiremath-p
+      </a>
+      <a href="https://testmind-ai.vercel.app/" target="_blank" class="contact-link">
+        <div class="contact-link-icon">🧠</div>
+        TestMind AI — testmind-ai.vercel.app
+      </a>
+      <a href="https://ai-qa-prompts.vercel.app/" target="_blank" class="contact-link">
+        <div class="contact-link-icon">⚡</div>
+        AI QA Toolkit — ai-qa-prompts.vercel.app
+      </a>
+      <a href="https://pooja70h-lab.github.io/ml-portfolio" target="_blank" class="contact-link">
+        <div class="contact-link-icon">💻</div>
+        GitHub Portfolio
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Pooja Hiremath · Senior QA Lead & SDET · Tampa, FL</p>
+</footer>
+
+</body>
+</html>
